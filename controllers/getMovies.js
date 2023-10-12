@@ -1,5 +1,4 @@
 const con = require("../db/db");
-
 // controller to fetch all movies
 
 const getMovies = (req, res) => {
