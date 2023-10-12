@@ -6,6 +6,6 @@ const movieRoute = express.Router();
 
 // route to add a movie
 movieRoute.post('/v1/movies', addMovie);
-movieRoute.delete('/v1/movies/:id', removeMovie);
+movieRoute.delete('/v1/movies/:movieId', removeMovie);
 
 module.exports = movieRoute;
