@@ -13,7 +13,12 @@ const searchMovieByName = (req, res) => {
             } else {
                 console.log(result);
                 const movie = result[0];
-                res.status(200).json({"message": "movie retreived", movie});
+                if (movie) {
+                    res.status(200).json({"message": "movie retreived", movie});
+                } else {
+                    res.status(404).json({"message": "no movie found"});
+                }
+                
             }
         });
     } else {
