@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'main.html'));
-    res.json({"message": "welcome to my server"});
+    // res.json({"message": "welcome to my server"});
 });
 app.listen(port, () => {
     console.log(`server has started at http://localhost:${port}/`);
