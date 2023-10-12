@@ -5,8 +5,8 @@ const addMovie = (req, res) => {
     const {name, genre, plot, release_date, rating, notes} = req.body;
 
     if (name && genre && plot && release_date && rating && notes) {
-        const sql = "INSERT INTO movies VALUES(?,?,?,?,?,?)";
-        con.query(sql, [name, genre, plot, release_date, rating, notes], function (err, result){
+        const sql = "INSERT INTO movies VALUES(?,?,?,?,?,?,?)";
+        con.query(sql, [0,name, genre, plot, release_date, rating, notes], function (err, result){
             if (err) {
                 console.log(err);
                 res.status(400).json({"message": "failed to save movie information"});
