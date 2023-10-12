@@ -4,6 +4,7 @@ const removeMovie = require('../controllers/removeMovie');
 const getMovies = require('../controllers/getMovies');
 const searchMovieByName = require('../controllers/searchMovieByName');
 const sortMovies = require('../controllers/sortMovies');
+const getMovie = require('../controllers/getMovie');
 
 const movieRoute = express.Router();
 
@@ -15,6 +16,8 @@ movieRoute.get('/v1/movies', getMovies);
 movieRoute.get('/v1/movies/search', searchMovieByName);
 // route to sort movies
 movieRoute.get('/v1/movies/sort', sortMovies);
+// route to get single movie
+movieRoute.get('/v1/movies/:movieId', getMovie);
 // route to delete movie
 movieRoute.delete('/v1/movies/:movieId', removeMovie);
 
