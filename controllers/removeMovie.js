@@ -2,7 +2,7 @@ const con = require("../db/db");
 
 // controller to remove movie
 const removeMovie = (req, res) => {
-   const movieId = pasreInt(req.params.movieId);
+   const movieId = parseInt(req.params.movieId);
    console.log(movieId);
 
    if (movieId) {
