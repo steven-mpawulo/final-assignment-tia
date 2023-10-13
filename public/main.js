@@ -7,7 +7,7 @@ const addMovie = async () => {
     let notes = document.getElementById('notes');
 
     if (genre.value && plot.value && releaseDate.value && rating.value && notes.value) {
-        await axios.post(`http://localhost:${process.env.PORT}/api/v1/movies`, {
+        await axios.post(`http://localhost:8000/api/v1/movies`, {
             "name": name,
             "genre": genre,
             "plot": plot,
@@ -32,11 +32,16 @@ const addMovie = async () => {
         alert("please provide the required movie details");
     }
 }
-
-const getMovies = async () => {
+const getMovies = async (sort = false) => {
+    let endpoint = 'movies';
+    if (sort) {
+        endpoint = 'movies/sort';
+    } else {
+        endpoint = endpoint;
+    }
     let moviesList = document.getElementById('movies');
 
-     await axios.get(`http://localhost:${process.env.PORT}/api/v1/movies`).then(function(response) {
+     await axios.get(`http://localhost:8000/api/v1/${endpoint}`).then(function(response) {
         // console.log(response.data);
         const movies = response.data.movies;
         movies.forEach((movie) => {
