@@ -1,12 +1,12 @@
 const addMovie = () => {
-    let name = document.getElementById("name").value;
-    let genre = document.getElementById("genre").value;
-    let plot = document.getElementById("plot").value;
-    let releaseDate = document.getElementById('release_date').value;
-    let rating = document.getElementById('rating').value;
-    let notes = document.getElementById('notes').value;
+    let name = document.getElementById("name");
+    let genre = document.getElementById("genre");
+    let plot = document.getElementById("plot");
+    let releaseDate = document.getElementById('date');
+    let rating = document.getElementById('rating');
+    let notes = document.getElementById('notes');
 
-    if (genre && plot && releaseDate && rating && notes) {
+    if (genre.value && plot.value && releaseDate.value && rating.value && notes.value) {
         axios.post('http://localhost:8000/api/v1/movies', {
             "name": name,
             "genre": genre,
@@ -16,7 +16,14 @@ const addMovie = () => {
             "notes": notes
         }).then((response) => {
             console.log(response);
-            alert("movie added successfully");
+            name.value = "";
+            genre.value = "";
+            plot.value = "";
+            releaseDate.value = "";
+            rating.value = "";
+            notes.value = "";
+             alert("movie added successfully");
+
         }).catch((err) => {
             console.log(err);
             alert("failed to add movie");
