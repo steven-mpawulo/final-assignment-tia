@@ -11,7 +11,10 @@
     <div class="search-movie">
         <label for="search">Search for movie</label>
         <input type="text" id="search" name="search" >
+        <button onclick="searchMovieByName()">Search</button>
+        <ul id="movie"></ul>
     </div>
+
     <button onclick="getMovies()">Show Movies</button>
     <div class="movies-container">
         <button onclick="getMovies(sort=true)">Sort</button>

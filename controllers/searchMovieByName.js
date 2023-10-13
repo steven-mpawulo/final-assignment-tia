@@ -2,7 +2,8 @@ const con = require("../db/db");
 
 // controller to search movie by name
 const searchMovieByName = (req, res) => {
-    const { name } = req.body;
+    const name = req.query.name;
+    console.log(name);
 
     if (name) {
         const sql = "SELECT * FROM movies WHERE name = ?";
