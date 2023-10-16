@@ -35,6 +35,8 @@ const addMovie = async () => {
 
 
 const getMovies = async (sort = false) => {
+    let outsideRating = []; 
+    let thumbNails = [];
     let endpoint = 'movies';
     if (sort) {
         endpoint = 'movies/sort';
@@ -43,11 +45,25 @@ const getMovies = async (sort = false) => {
     }
     let moviesList = document.getElementById('movies');
 
-    await axios.get(`http://localhost:8000/api/v1/${endpoint}`).then(function (response) {
+    await axios.get(`http://localhost:8000/api/v1/${endpoint}`).then(async function (response) {
         // console.log(response.data);
         const movies = response.data.movies;
-        movies.forEach((movie) => {
-            console.log(movie);
+        movies.forEach(async (movie) => {
+            console.log(`movie: ${movie.id}, ${movie.name}`);
+            await axios.get(`https://www.omdbapi.com/?t=${movie.name}&apikey=dd3d212b`).then((response) => {
+            // console.log(response.data);
+            // console.log(response.data.Ratings);
+            let ratings = response.data.Ratings;
+            let thumbNail = response.data.Poster;
+            let exactRating = ratings[0]
+            // console.log(ratings[0]);
+            outsideRating.push(exactRating);
+            thumbNails.push(thumbNail);
+            console.log(outsideRating);
+            }).catch((e) => {
+                console.log(e);
+                alert("failed to fetch external movie rating");
+            });
             let li = document.createElement('li');
             let name = document.createElement('p');
             let genre = document.createElement('p');
@@ -55,6 +71,8 @@ const getMovies = async (sort = false) => {
             let releaseDate = document.createElement('p');
             let rating = document.createElement('p');
             let notes = document.createElement('p');
+            let externalRating = document.createElement('p');
+            let thumbNail = document.createElement('IMG');
             let deleteButton = document.createElement('button');
             let buttonTitle = document.createTextNode("Remove");
             deleteButton.addEventListener("click", async () => {
@@ -78,12 +96,16 @@ const getMovies = async (sort = false) => {
             releaseDate.innerText = `Release Date: ${movie.release_date}`;
             rating.innerText = `Rating: ${movie.rating}`;
             notes.innerText = `Notes: ${movie.notes}`;
+            externalRating.innerText = `External Rating: Source: ${outsideRating[parseInt(movie.id)].Source}, Value: ${outsideRating[parseInt(movie.id)].Value}`;
+            thumbNail.src = `${thumbNails[parseInt(movie.id)]}`;
             movieContainer.appendChild(name);
             movieContainer.appendChild(genre);
             movieContainer.appendChild(plot);
             movieContainer.appendChild(releaseDate);
             movieContainer.appendChild(rating);
             movieContainer.appendChild(notes);
+            movieContainer.appendChild(externalRating);
+            movieContainer.appendChild(thumbNail);
             movieContainer.appendChild(deleteButton);
             li.appendChild(movieContainer);
             moviesList.appendChild(li);
