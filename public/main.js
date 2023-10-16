@@ -1,12 +1,12 @@
 const addMovie = async () => {
-    let name = document.getElementById("name");
-    let genre = document.getElementById("genre");
-    let plot = document.getElementById("plot");
-    let releaseDate = document.getElementById('date');
-    let rating = document.getElementById('rating');
-    let notes = document.getElementById('notes');
+    let name = document.getElementById("name").value;
+    let genre = document.getElementById("genre").value;
+    let plot = document.getElementById("plot").value;
+    let releaseDate = document.getElementById('date').value;
+    let rating = document.getElementById('rating').value;
+    let notes = document.getElementById('notes').value;
 
-    if (genre.value && plot.value && releaseDate.value && rating.value && notes.value) {
+    if (name && genre && plot && releaseDate && rating && notes ) {
         await axios.post(`http://localhost:8000/api/v1/movies`, {
             "name": name,
             "genre": genre,
@@ -32,6 +32,8 @@ const addMovie = async () => {
         alert("please provide the required movie details");
     }
 }
+
+
 const getMovies = async (sort = false) => {
     let endpoint = 'movies';
     if (sort) {
@@ -60,6 +62,7 @@ const getMovies = async (sort = false) => {
                 const movieId = movie.id;
                 await axios.delete(`http://localhost:8000/api/v1/movies/${movieId}`).then((response) => {
                 console.log(response.data);
+                location.reload();
                 alert("movie removed successfully");
                 }).catch((err) => {
                     console.log(err);
