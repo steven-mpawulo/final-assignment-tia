@@ -7,7 +7,7 @@ const removeMovie = (req, res) => {
 
    if (movieId) {
     const sql = "DELETE FROM movies WHERE id = ?";
-    con.query(sql, [id], function(err, result){
+    con.query(sql, [movieId], function(err, result){
         if (err) {
             console.log(err);
             res.status(400).json({"message": "something went wrong"});

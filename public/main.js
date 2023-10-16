@@ -53,6 +53,21 @@ const getMovies = async (sort = false) => {
             let releaseDate = document.createElement('p');
             let rating = document.createElement('p');
             let notes = document.createElement('p');
+            let deleteButton = document.createElement('button');
+            let buttonTitle = document.createTextNode("Remove");
+            deleteButton.addEventListener("click", async () => {
+                console.log(`movie Id: ${movie.id}`);
+                const movieId = movie.id;
+                await axios.delete(`http://localhost:8000/api/v1/movies/${movieId}`).then((response) => {
+                console.log(response.data);
+                alert("movie removed successfully");
+                }).catch((err) => {
+                    console.log(err);
+                    alert("failed to remove movie");
+                });
+            });
+
+            deleteButton.appendChild(buttonTitle);
             let movieContainer = document.createElement('div');
             name.innerText = `Name: ${movie.name}`;
             genre.innerText = `Genre: ${movie.genre}`;
@@ -66,6 +81,7 @@ const getMovies = async (sort = false) => {
             movieContainer.appendChild(releaseDate);
             movieContainer.appendChild(rating);
             movieContainer.appendChild(notes);
+            movieContainer.appendChild(deleteButton);
             li.appendChild(movieContainer);
             moviesList.appendChild(li);
         });
