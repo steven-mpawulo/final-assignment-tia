@@ -16,12 +16,12 @@ const addMovie = async () => {
             "notes": notes
         }).then(function (response) {
             console.log(response);
-            name.value = "";
-            genre.value = "";
-            plot.value = "";
-            releaseDate.value = "";
-            rating.value = "";
-            notes.value = "";
+            name = "";
+            genre = "";
+            plot = "";
+            releaseDate = "";
+            rating = "";
+            notes = "";
             alert("movie added successfully");
 
         }).catch(function (err) {
