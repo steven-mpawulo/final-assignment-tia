@@ -22,6 +22,7 @@ const addMovie = async () => {
             releaseDate = "";
             rating = "";
             notes = "";
+            location.reload();
             alert("movie added successfully");
 
         }).catch(function (err) {
