@@ -98,6 +98,8 @@ const getMovies = async (sort = false) => {
             notes.innerText = `Notes: ${movie.notes}`;
             externalRating.innerText = `External Rating: Source: ${outsideRating[parseInt(movie.id)].Source}, Value: ${outsideRating[parseInt(movie.id)].Value}`;
             thumbNail.src = `${thumbNails[parseInt(movie.id)]}`;
+            thumbNail.style.width = '50%';
+            movieContainer.appendChild(thumbNail);
             movieContainer.appendChild(name);
             movieContainer.appendChild(genre);
             movieContainer.appendChild(plot);
@@ -105,8 +107,14 @@ const getMovies = async (sort = false) => {
             movieContainer.appendChild(rating);
             movieContainer.appendChild(notes);
             movieContainer.appendChild(externalRating);
-            movieContainer.appendChild(thumbNail);
             movieContainer.appendChild(deleteButton);
+            movieContainer.style.display = 'flex';
+            movieContainer.style.flexDirection = 'column';
+            movieContainer.style.border = '1px solid black';
+            movieContainer.style.borderRadius = '15px';
+            movieContainer.style.padding = '16px';
+            movieContainer.style.marginBottom = '8px';
+            movieContainer.style.width = '50%';
             li.appendChild(movieContainer);
             moviesList.appendChild(li);
         });

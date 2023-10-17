@@ -9,47 +9,49 @@
 
 <body>
     <main>
-        <p>My favorite movies</p>
-        <div class="search-movie">
-            <label for="search">Search for movie</label>
-            <input type="text" id="search" name="search">
-            <button onclick="searchMovieByName()">Search</button>
-            <ul id="movie"></ul>
+        <div class="main-container">
+            <h1>My favorite movies</h1>
+            <div class="search-movie">
+                <label for="search">Search for movie:</label> <br>
+                <input type="text" id="search" name="search" placeholder="Movie name">
+                <button onclick="searchMovieByName()">Search</button>
+                <ul id="movie"></ul>
+            </div>
+            <button onclick="getMovies()">Show Movies</button>
+            <div class="movies-container">
+                <button onclick="getMovies(sort=true)">Sort</button>
+                <ul id="movies">
+                </ul>
+            </div>
+            <h1>Add favorite movie</h1>
+            <div class="name">
+                <label for="name">Name:</label> <br>
+                <input type="text" id="name" name="name" placeholder="Movie name">
+            </div>
+            <div class="genre-conatiner">
+                <label for="genre">Genre:</label> <br>
+                <input type="text" id="genre" name="genre" placeholder="Movie genre">
+            </div>
+            <div class="plot-container">
+                <label for="plot">Plot:</label> <br>
+                <textarea id="plot" name="plot" rows="4" cols="50" placeholder="Movie plot">
+    </textarea>
+            </div>
+            <div class="date-container">
+                <label for="date">Release Date:</label><br>
+                <input type="date" id="date" name="date" pattern="\d{4}-\d{2}-\d{2}">
+            </div>
+            <div class="rating-container">
+                <label for="rating">Rating:</label><br>
+                <input type="number" id="rating" name="rating" placeholder="5">
+            </div>
+            <div class="notes-container">
+                <label for="notes">Notes:</label> <br>
+                <input type="text" id="notes" name="notes" placeholder="Your movie opinion">
+            </div>
+            <button type="submit" onclick="addMovie()">Submit</button>
         </div>
 
-        <button onclick="getMovies()">Show Movies</button>
-        <div class="movies-container">
-            <button onclick="getMovies(sort=true)">Sort</button>
-            <ul id="movies">
-            </ul>
-        </div>
-        <p>Add favorite movie</p>
-        <div class="name">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name">
-        </div>
-        <div class="genre-conatiner">
-            <label for="genre">Genre</label>
-            <input type="text" id="genre" name="genre">
-        </div>
-        <div class="plot-container">
-            <label for="plot">Plot</label>
-            <textarea id="plot" name="plot" rows="4" cols="50">
-    </textarea>
-        </div>
-        <div class="date-container">
-            <label for="date">Release Date</label>
-            <input type="date" id="date" name="date" pattern="\d{4}-\d{2}-\d{2}">
-        </div>
-        <div class="rating-container">
-            <label for="rating">Rating</label>
-            <input type="number" id="rating" name="rating">
-        </div>
-        <div class="notes-container">
-            <label for="notes">Notes</label>
-            <input type="text" id="notes" name="notes">
-        </div>
-        <button type="submit" onclick="addMovie()">Submit</button>
     </main>
 
 

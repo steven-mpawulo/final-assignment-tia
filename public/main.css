@@ -1,0 +1,37 @@
+main {
+    width: 100%;
+    height: 100%;
+}
+
+.main-container {
+    width: 80%;
+    height: 50%;
+    margin: auto;
+}
+label {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+    height: 30px;
+}
+
+
+
+button {
+    border: 1px solid hsl(300, 69%, 71%);
+    border-radius: 10px;
+    background-color: hsl(300, 69%, 71%);
+    color: white;
+    height: 30px;
+    width: 150;
+    margin-bottom: 10px;
+}
