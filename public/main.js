@@ -73,6 +73,18 @@ const getMovies = async (sort = false) => {
             let rating = document.createElement('p');
             let notes = document.createElement('p');
             let externalRating = document.createElement('p');
+            let starContainer = document.createElement('div');
+            starContainer.innerHTML = "";
+            // starContainer.style.display = "flex";
+            let numberRating = parseInt(movie.rating);
+            console.log(numberRating)
+            for (let i = 0; i < numberRating; i++) {
+                console.log(i);
+                const star = document.createElement("span");
+                star.innerHTML = '★';
+                star.style.color = "hsl(300, 69%, 71%)";
+                starContainer.appendChild(star);
+            }
             let thumbNail = document.createElement('IMG');
             let deleteButton = document.createElement('button');
             let buttonTitle = document.createTextNode("Remove");
@@ -100,12 +112,13 @@ const getMovies = async (sort = false) => {
             externalRating.innerText = `External Rating: Source: ${outsideRating[parseInt(movie.id)].Source}, Value: ${outsideRating[parseInt(movie.id)].Value}`;
             thumbNail.src = `${thumbNails[parseInt(movie.id)]}`;
             thumbNail.style.width = '50%';
-            movieContainer.appendChild(thumbNail);
+            // movieContainer.appendChild(thumbNail);
             movieContainer.appendChild(name);
             movieContainer.appendChild(genre);
             movieContainer.appendChild(plot);
             movieContainer.appendChild(releaseDate);
             movieContainer.appendChild(rating);
+            movieContainer.appendChild(starContainer);
             movieContainer.appendChild(notes);
             movieContainer.appendChild(externalRating);
             movieContainer.appendChild(deleteButton);
