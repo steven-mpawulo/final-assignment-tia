@@ -13,7 +13,7 @@ Ensure you have MySQL and nodejs installed on your local machine.
 - Clone the repository from GitHub.
 
 ``` bash
-git clone https://github.com/ringtho/movielist-backend.git
+git clone https://github.com/steven-mpawulo/final-assignment-tia.git
 ```
 
 #### Install Dependencies
