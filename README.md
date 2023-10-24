@@ -42,11 +42,11 @@ PASSWORD=your_mysql_password
 npm start
 ```
 
-#### Access the API
+#### Access the Application
 - The application should now be running locally. You can access it at the following URL:
 
 ``` bash
-http://localhost:8000/api/v1
+http://localhost:8000/
 ```
 
 Now you have the application running on your local machine, connected to your MySQL database. You can use this local environment for testing and development.
