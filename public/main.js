@@ -109,10 +109,12 @@ const getMovies = async (sort = false) => {
             releaseDate.innerText = `Release Date: ${movie.release_date}`;
             rating.innerText = `Rating: ${movie.rating}`;
             notes.innerText = `Notes: ${movie.notes}`;
-            externalRating.innerText = `External Rating: Source: ${outsideRating[parseInt(movie.id)].Source}, Value: ${outsideRating[parseInt(movie.id)].Value}`;
-            thumbNail.src = `${thumbNails[parseInt(movie.id)]}`;
+            let numberId = parseInt(movie.id) - 1;
+            console.log(numberId);
+            externalRating.innerText = `External Rating: Source: ${outsideRating[(parseInt(movie.id) - 1)].Source}, Value: ${outsideRating[(parseInt(movie.id) - 1)].Value}`;
+            thumbNail.src = `${thumbNails[(parseInt(movie.id) - 1)]}`;
             thumbNail.style.width = '50%';
-            // movieContainer.appendChild(thumbNail);
+            movieContainer.appendChild(thumbNail);
             movieContainer.appendChild(name);
             movieContainer.appendChild(genre);
             movieContainer.appendChild(plot);
